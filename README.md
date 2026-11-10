@@ -1,5 +1,7 @@
 ﻿# TeamFlow
 
+![TeamFlow Repository Checks](https://github.com/mittapallikishore/TeamFlow/actions/workflows/ci.yml/badge.svg?branch=main)
+
 TeamFlow is planned as a full-stack application using Django (backend) and React (frontend).
 
 ## Current project status
@@ -32,3 +34,4 @@ Application-specific setup commands will become executable after the backend and
 ## Security
 
 Never commit real `.env` files, credentials, API keys, or access tokens. Use the provided `.env.example` files as safe templates.
+
