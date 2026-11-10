@@ -1,0 +1,23 @@
+Python
+
+pycache/ *.py[cod] venv/ .venv/
+
+Environment files
+
+.env .env.* !.env.example
+
+Django
+
+db.sqlite3 media/ staticfiles/
+
+React / Node
+
+node_modules/ dist/ build/ npm-debug.log*
+
+IDE
+
+.vscode/ .idea/
+
+Operating system
+
+.DS_Store Thumbs.db
