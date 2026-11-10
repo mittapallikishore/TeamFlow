@@ -1,10 +1,10 @@
-﻿name: TeamFlow Repository Checks
+name: TeamFlow Repository Checks
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
-    branches: [main, develop]
+    branches: [main]
 
 jobs:
   repository-check:
