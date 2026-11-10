@@ -1,0 +1,36 @@
+
+name: TeamFlow Repository Checks
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  repository-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required documentation
+        run: |
+          test -f README.md
+          test -f CONTRIBUTING.md
+          test -f docs/SETUP.md
+          test -f docs/GIT_WORKFLOW.md
+          test -f backend/.env.example
+          test -f frontend/.env.example
+          test -f .gitignore
+
+      - name: Check environment files are not committed
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$'; then
+            echo "ERROR: Actual .env file is tracked"
+            exit 1
+          fi
+
+      - name: Repository check passed
+        run: echo "TeamFlow repository checks passed!"
