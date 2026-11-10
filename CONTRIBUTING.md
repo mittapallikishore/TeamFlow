@@ -1,62 +1,68 @@
-﻿
-# TeamFlow Contribution Guidelines
+﻿# TeamFlow Contribution Guidelines
 
-## 1. Branching Strategy
+## 1. Overview
+TeamFlow follows a main-based feature branch workflow. Backend and frontend contributors must follow the same contribution process.
 
-We follow a feature branch workflow.
+## 2. Branching Strategy
+Use main as the base branch.
 
-- main: Stable production code.
-- develop: Integration branch.
-- feature/*: New feature development.
-- fix/*: Bug fixes.
-- docs/*: Documentation updates.
-- refactor/*: Code improvements.
+Branch naming:
+- feature/*: New features
+- fix/*: Bug fixes
+- docs/*: Documentation updates
+- refactor/*: Code improvements
 
 Example:
 
-git checkout develop
-git pull origin develop
-git checkout -b feature/user-login
+    git checkout main
+    git pull origin main
+    git checkout -b feature/user-login
 
-## 2. Commit Message Convention
-
-Follow conventional commit messages.
-
+## 3. Commit Message Convention
+Use the following types:
 - feat: New feature
 - fix: Bug fix
 - docs: Documentation
-- style: Formatting changes
+- style: Formatting
 - refactor: Code restructuring
-- test: Adding tests
+- test: Tests
 - chore: Configuration and maintenance
 
 Examples:
 
-feat: add user authentication
-fix: resolve login error
-docs: update development guide
-chore: update gitignore
+    feat: add user authentication
+    fix: resolve login error
+    docs: update development guide
+    chore: update gitignore
 
-## 3. Pull Request Guidelines
+## 4. Pull Request Guidelines
+1. Create a working branch from the latest main.
+2. Implement the required changes.
+3. Run relevant checks.
+4. Commit using meaningful messages.
+5. Push the working branch to GitHub.
+6. Open a Pull Request targeting main.
+7. Provide a clear description and testing details.
+8. Request at least one teammate review.
+9. Address review feedback.
+10. Merge after approval and successful required checks.
 
-1. Create a feature branch.
-2. Implement your changes.
-3. Run relevant tests.
-4. Push your branch.
-5. Open a Pull Request against develop.
-6. Describe your changes.
-7. Request at least one teammate review.
-8. Merge after approval and successful checks.
-
-## 4. Code Quality
-
+## 5. Code Quality
 - Never commit environment files containing secrets.
 - Follow Python and JavaScript coding standards.
 - Write tests for new functionality.
 - Update documentation when necessary.
 - Keep commits small and meaningful.
+- Run agreed linting and testing commands when available.
 
-## 5. Development Setup
+## 6. Security
+- Do not commit passwords, API keys or access tokens.
+- Use the provided .env.example templates.
+- Keep local environment files excluded from Git.
+- Report exposed credentials immediately.
 
-Refer to docs/SETUP.md
-for backend and frontend setup instructions.
+## 7. Development Setup
+Refer to docs/SETUP.md for backend and frontend setup instructions.
+
+## 8. Additional Guidance
+For detailed branch, commit and Pull Request procedures, refer to docs/GIT_WORKFLOW.md.
