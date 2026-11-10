@@ -1,5 +1,4 @@
-
-name: TeamFlow Repository Checks
+﻿name: TeamFlow Repository Checks
 
 on:
   push:
@@ -15,22 +14,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check required documentation
+      - name: Validate required repository files
         run: |
           test -f README.md
           test -f CONTRIBUTING.md
           test -f docs/SETUP.md
           test -f docs/GIT_WORKFLOW.md
+          test -f backend/README.md
+          test -f frontend/README.md
           test -f backend/.env.example
           test -f frontend/.env.example
           test -f .gitignore
 
-      - name: Check environment files are not committed
+      - name: Verify environment templates are tracked
         run: |
-          if git ls-files | grep -E '(^|/)\.env$'; then
-            echo "ERROR: Actual .env file is tracked"
+          git ls-files --error-unmatch backend/.env.example
+          git ls-files --error-unmatch frontend/.env.example
+
+      - name: Prevent committed environment secrets
+        shell: bash
+        run: |
+          if git ls-files | grep -E '(^|/)\.env($|\.)' | grep -vE '(^|/)\.env\.example$'; then
+            echo "ERROR: A real environment file is tracked."
             exit 1
           fi
+          echo "Environment file check passed."
 
-      - name: Repository check passed
+      - name: Repository validation passed
         run: echo "TeamFlow repository checks passed!"

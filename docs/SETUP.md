@@ -1,134 +1,104 @@
-TeamFlow - Local Development Setup Guide
-1. Introduction
+﻿# TeamFlow - Local Development Setup Guide
 
-This guide explains how backend and frontend contributors can configure and run the TeamFlow project locally.
+## 1. Current status
 
-2. Prerequisites
+The TeamFlow application source code has not been added yet.
+This guide describes the planned local setup. Application commands
+become executable after the backend and frontend projects are initialized.
 
-Install the following tools:
+## 2. Planned prerequisites
 
-Git
-Python 3.11 or the version agreed by the team
-Node.js and npm
-Code editor (VS Code recommended)
-3. Clone the Repository
+- Git
+- Python version agreed by the team
+- Node.js and npm
+- VS Code or another code editor
 
-Open a terminal and run:
+## 3. Clone the repository
 
-git clone https://github.com/mittapallikishore/TeamFlow.git
+    git clone https://github.com/mittapallikishore/TeamFlow.git
+    cd TeamFlow
 
-Navigate into the project:
+## 4. Planned backend setup (Django)
 
-cd TeamFlow
+After the Django application is added:
 
-4. Backend Setup (Python / Django)
-Step 1: Navigate to backend
+    cd backend
+    python -m venv venv
 
-cd backend
+Windows PowerShell:
 
-Step 2: Create virtual environment
+    .\venv\Scripts\Activate.ps1
 
-python -m venv venv
+Linux/macOS:
 
-Step 3: Activate virtual environment
+    source venv/bin/activate
 
-Windows:
+Install dependencies after `requirements.txt` is added:
 
-venv\Scripts\activate
+    pip install -r requirements.txt
 
-Linux / macOS:
+Configure local environment variables by copying `.env.example` to `.env`.
+Run migrations and start the server after `manage.py` is added:
 
-source venv/bin/activate
+    python manage.py migrate
+    python manage.py runserver
 
-Step 4: Install dependencies
+Expected local address: http://127.0.0.1:8000
 
-pip install -r requirements.txt
+## 5. Planned frontend setup (React)
 
-Step 5: Configure environment variables
+After the React application and `package.json` are added:
 
-Copy .env.example to .env.
+    cd frontend
+    npm install
 
-Update the local configuration values as required.
+Copy `.env.example` to `.env`, then configure the backend API URL.
 
-Step 6: Run database migrations
+Run the frontend using the script agreed by the team, for example:
 
-python manage.py migrate
+    npm run dev
 
-Step 7: Start Django server
+Expected local address for a Vite setup: http://localhost:5173
 
-python manage.py runserver
+## 6. Planned quality checks
 
-Backend default address:
+Backend checks, once configured:
 
-http://127.0.0.1:8000
+    python manage.py check
+    python manage.py test
 
-5. Frontend Setup (React)
-Step 1: Open another terminal
+Frontend checks, once scripts are configured:
 
-Navigate to the frontend folder from the repository root:
+    npm run lint
+    npm test
 
-cd frontend
+The actual commands must match the scripts and test tools selected by the developers.
 
-Step 2: Install dependencies
+## 7. Git contribution workflow
 
-npm install
+1. Pull the latest agreed base branch.
+2. Create a feature, bugfix, or documentation branch.
+3. Make focused changes.
+4. Run the available checks.
+5. Commit using the agreed commit convention.
+6. Push the branch and open a pull request.
+7. Obtain the required review and passing CI checks before merging.
 
-Step 3: Configure environment variables
+See `GIT_WORKFLOW.md` for details.
 
-Copy .env.example to .env.
+## 8. Security guidelines
 
-Configure the backend API URL.
+- Never commit real `.env` files.
+- Never expose passwords, API keys, or access tokens.
+- Use `.env.example` as a safe configuration template.
+- Keep generated dependencies and build output out of Git.
+- Rotate credentials immediately if they are accidentally exposed.
 
-Step 4: Start frontend development server
+## 9. Contributor verification
 
-npm run dev
+Before application development begins, contributors should verify repository access,
+branch workflow, documentation, and CI checks.
 
-Frontend default address:
-
-http://localhost:5173
-
-6. Verification Commands
-Backend
-
-Run:
-
-python manage.py check
-
-python manage.py test
-
-Frontend
-
-Run:
-
-npm run lint
-
-npm test
-
-These commands must match the scripts configured in the actual project.
-
-7. Git Contribution Workflow
-Pull the latest agreed development branch.
-Create a feature branch.
-Make changes.
-Run the relevant tests.
-Commit changes.
-Push your branch.
-Open a Pull Request.
-Request team review.
-
-Refer to docs/GIT_WORKFLOW.md for detailed Git conventions.
-
-8. Security Guidelines
-Never commit real .env files.
-Never expose passwords or API keys.
-Use .env.example as a template.
-Keep local dependencies and generated files out of Git.
-9. Troubleshooting
-If Python dependencies fail, verify your Python version.
-If npm installation fails, verify your Node.js version.
-If the backend cannot connect, check database and environment settings.
-If the frontend cannot reach the backend, verify the API URL.
-Ask the team for help if setup problems continue.
-10. Contributor Verification
-
-At least one backend contributor and one frontend contributor should independently follow this guide and confirm successful local setup.
+After the application is initialized, one backend contributor and one frontend
+contributor should independently complete their respective local setup and report
+any issues.

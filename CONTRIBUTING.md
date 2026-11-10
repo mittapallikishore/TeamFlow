@@ -1,4 +1,4 @@
-
+﻿
 # TeamFlow Contribution Guidelines
 
 ## 1. Branching Strategy
@@ -58,5 +58,5 @@ chore: update gitignore
 
 ## 5. Development Setup
 
-Refer to docs/DEVELOPMENT.md
+Refer to docs/SETUP.md
 for backend and frontend setup instructions.

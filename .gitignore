@@ -1,23 +1,33 @@
-Python
+﻿# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
 
-pycache/ *.py[cod] venv/ .venv/
+# Environment files
+.env
+.env.*
+!.env.example
 
-Environment files
+# Django
+db.sqlite3
+media/
+staticfiles/
 
-.env .env.* !.env.example
+# React / Node
+node_modules/
+dist/
+build/
+coverage/
+npm-debug.log*
 
-Django
+# IDE
+.vscode/
+.idea/
 
-db.sqlite3 media/ staticfiles/
-
-React / Node
-
-node_modules/ dist/ build/ npm-debug.log*
-
-IDE
-
-.vscode/ .idea/
-
-Operating system
-
-.DS_Store Thumbs.db
+# Operating system
+.DS_Store
+Thumbs.db
